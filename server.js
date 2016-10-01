@@ -15,6 +15,8 @@ app.get('/', function(request, response) {
 }); 
 app.get('/ping', function (req, res) {
 	pingAllSubscribers();
+	console.log("Long Live MASTER!!!!");
+	res.status(200).send("My Son is good!");
 }); 
 //Utility Function
 function pingAllSubscribers(){
@@ -26,7 +28,7 @@ function pingAllSubscribers(){
 //Interval
 setInterval(function(){ pingAllSubscribers();}, 900000);
 //Port Settings
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 1000));
 http.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));
 });
