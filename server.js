@@ -20,7 +20,7 @@ app.get('/ping', function (req, res) {
 }); 
 //Utility Function
 function pingAllSubscribers(){
-	console.log("function reached =-=-=-=-=-");   
+	console.log("Ditributing PING =-=-=-=-=-");   
 	request('http://www.unisoundlive.com/ping', function (error, response, body) {
 		console.log(response.toString().length);
 	});
