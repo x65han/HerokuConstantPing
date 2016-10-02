@@ -13,8 +13,7 @@ app.get('/', function(request, response) {
 	pingAllSubscribers();
 	response.sendFile(__dirname + '/index.html');
 }); 
-app.get('/ping', function (req, res) {
-	pingAllSubscribers();
+app.get('/ping', function (req, res) { 
 	console.log("Long Live MASTER!!!!");
 	res.status(200).send("My Son is good!");
 }); 
