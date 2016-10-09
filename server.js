@@ -19,13 +19,18 @@ app.get('/ping', function (req, res) {
 }); 
 //Utility Function
 function pingAllSubscribers(){
-	console.log("Ditributing PING =-=-=-=-=-");   
-	request('http://www.unisoundlive.com/ping', function (error, response, body) {
-		console.log(response.toString().length);
-	});
+	console.log("Ditributing PING =-=-=-=-=-");  
+	for(var x = 0 ;x < slaves.length;x++){
+		request(slaves[x], function (error, response, body) { 
+			if(response !=undefined)	console.log(response.toString().length);
+			else console.log("Response is Undefined");
+		});
+	}
 }
+//Slave List
+var slaves = ["http://www.unisoundlive.com/ping","http://www.survivalgameonline.com/ping"];
 //Interval
-setInterval(function(){ pingAllSubscribers();}, 900000);
+setInterval(function(){ pingAllSubscribers();}, 1740 * 1000);
 //Port Settings
 app.set('port', (process.env.PORT || 1000));
 http.listen(app.get('port'), function() {
