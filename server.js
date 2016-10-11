@@ -17,8 +17,14 @@ app.get('/ping', function (req, res) {
 	console.log("Long Live MASTER!!!!");
 	res.status(200).send("My Son is good!");
 }); 
+app.get('/stopPING', function (req, res) { 
+	status = false;
+	console.log("Stopped");
+	res.status(200).send("Bye!!");
+}); 
 //Utility Function
 function pingAllSubscribers(){
+	if(status != true) return;
 	console.log("Ditributing PING =-=-=-=-=-");  
 	for(var x = 0 ;x < slaves.length;x++){
 		request(slaves[x], function (error, response, body) { 
@@ -28,6 +34,7 @@ function pingAllSubscribers(){
 	}
 }
 //Slave List
+var status = true;
 var slaves = ["http://www.unisoundlive.com/ping","http://www.survivalgameonline.com/ping"];
 //Interval
 setInterval(function(){ pingAllSubscribers();}, 1740 * 1000);
