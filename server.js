@@ -19,7 +19,8 @@ app.get('/ping', function (req, res) {
 }); 
 app.get('/stopPING', function (req, res) { 
 	status = false;
-	console.log("Stopped");
+	for(var x = 0;x < 10;x++)
+	console.log("Stopped by RESTFUL stopPING");
 	res.status(200).send("Bye!!");
 }); 
 //Utility Function
